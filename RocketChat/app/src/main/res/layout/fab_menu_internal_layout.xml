@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:src="@mipmap/ic_launcher"
+        app:fabSize="mini" />
+
+    <LinearLayout
+        android:id="@+id/FabToolBar"
+        android:layout_width="@dimen/fab_menu_width"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/toolbar"
+        android:layout_gravity="right"
+        android:animateLayoutChanges="true"
+        android:background="@color/accentColor"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/InnerFabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View style="@style/AppTheme.RightMenuItem" />
+
+            <ImageButton
+                android:id="@+id/SettingsButton"
+                style="@style/AppTheme.RightMenuItem"
+                android:src="@drawable/ic_settings_24dp" />
+
+            <ImageButton
+                android:id="@+id/SearchButton"
+                style="@style/AppTheme.RightMenuItem"
+                android:src="@drawable/ic_search_white_24dp" />
+
+            <ImageButton
+                android:id="@+id/MembersButton"
+                style="@style/AppTheme.RightMenuItem"
+                android:src="@drawable/ic_people_white_24dp" />
+
+            <ImageButton
+                android:id="@+id/FilesButton"
+                style="@style/AppTheme.RightMenuItem"
+                android:src="@drawable/ic_folder_24dp" />
+
+            <ImageButton
+                android:id="@+id/StaredButton"
+                style="@style/AppTheme.RightMenuItem"
+                android:src="@drawable/ic_star_white_24dp" />
+
+            <ImageButton
+                android:id="@+id/PinnedButton"
+                style="@style/AppTheme.RightMenuItem"
+                android:src="@drawable/ic_archive_24dp" />
+
+            <ImageButton
+                android:id="@+id/MicButton"
+                style="@style/AppTheme.RightMenuItem"
+                android:src="@drawable/ic_mic_24dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/MenuContentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:animateLayoutChanges="true"
+        android:background="@android:color/white" />
+</merge>

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Rocket Chat</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="email_or_username">Email or username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_your_password">Forgot your password</string>
+    <string name="register_a_new_account">Register a new account</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="confirm_your_password">Confirm your password</string>
+    <string name="submit">Submit</string>
+    <string name="registration_activity_title">Registration</string>
+    <string name="forgot_password_activity_title">Password recovery</string>
+    <string name="we_sent_you_an_email_check_it">We sent you an Email, check it!</string>
+    <string name="channels">Channels</string>
+    <string name="dms">DMs</string>
+    <string name="private_groups">Private Groups</string>
+    <string name="favorites">Favorites</string>
+    <string name="send">Send</string>
+    <string name="start_playing">Start playing</string>
+    <string name="stop_playing">Stop playing</string>
+    <string name="start_recording">Start recording</string>
+    <string name="stop_recording">Stop recording</string>
+    <string name="record_your_audio">Record your audio</string>
+    <string name="message">Message</string>
+</resources>

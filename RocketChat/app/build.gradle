@@ -1,0 +1,114 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+plugins {
+    id "me.tatarka.retrolambda" version "3.2.4"
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+apply plugin: 'com.neenbedankt.android-apt'
+
+repositories {
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url 'https://maven.fabric.io/public' }
+    maven {
+        url "https://jitpack.io"
+    }
+
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "chat.rocket.app"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        def twitterFile = file('twitter.properties')
+        if (twitterFile.exists()) {
+            def Properties twitterProperties = new Properties()
+            twitterProperties.load(new FileInputStream(twitterFile));
+            buildConfigField "String", "TWITTER_KEY", twitterProperties['TWITTER_KEY']
+            buildConfigField "String", "TWITTER_SECRET", twitterProperties['TWITTER_SECRET']
+        }else{
+            buildConfigField "String", "TWITTER_KEY", '""'
+            buildConfigField "String", "TWITTER_SECRET", '""'
+        }
+        buildConfigField "String", "WS_PATH", "\"/websocket\""
+
+    }
+    signingConfigs {
+        debug {
+            storeFile file('../keys/debug.keystore')
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storePassword 'android'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "WS_HOST", "\"demo.rocket.chat\""
+            buildConfigField "String", "WS_PROTOCOL", "\"wss\""
+        }
+        debug {
+            minifyEnabled false
+            //buildConfigField "String", "WS_HOST", "\"192.168.0.14:3000\""
+            //buildConfigField "String", "WS_PROTOCOL", "\"ws\""
+            buildConfigField "String", "WS_HOST", "\"demo.rocket.chat\""
+            buildConfigField "String", "WS_PROTOCOL", "\"wss\""
+
+        }
+    }
+    compileOptions {
+        sourceCompatibility rootProject.ext.sourceCompatibilityVersion
+        targetCompatibility rootProject.ext.targetCompatibilityVersion
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.3@aar') {
+        transitive = true;
+    }
+    compile('com.twitter.sdk.android:twitter:1.10.0@aar') {
+        transitive = true;
+    }
+    compile('com.github.ozodrukh:CircularReveal:1.1.1@aar') {
+        transitive = true;
+    }
+
+    compile 'com.android.support:appcompat-v7:'+rootProject.ext.supportVersion
+    compile 'com.android.support:design:'+rootProject.ext.supportVersion
+    compile 'com.facebook.android:facebook-android-sdk:4.8.1'
+
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'io.reactivex:rxjava:'+rootProject.ext.rxjavaVersion
+    compile 'com.trello:rxlifecycle:0.3.0'
+    compile 'com.trello:rxlifecycle-components:0.3.0'
+
+    compile 'com.google.android.gms:play-services-gcm:8.3.0'
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    compile 'com.makeramen:roundedimageview:2.2.1'
+
+    apt 'com.google.dagger:dagger-compiler:' + rootProject.ext.daggerVersion
+    compile 'com.google.dagger:dagger:' + rootProject.ext.daggerVersion
+
+    compile project(':rxmeteor')
+    compile project(':rxrc')
+    compile project(':recording')
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chat.rocket.app.ui.widgets.FabMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/FabMenu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/SubmitContainer"
+            android:layout_alignParentTop="true"
+            android:stackFromBottom="true"
+            android:transcriptMode="normal" />
+
+        <FrameLayout
+            android:id="@+id/SubmitContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="40dp"
+            android:animateLayoutChanges="true">
+
+            <EditText
+                android:id="@+id/SubmitEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/message"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+            <ProgressBar
+                android:id="@+id/UploadProgress"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:max="100"
+                android:progress="0"
+                android:visibility="gone" />
+        </FrameLayout>
+    </RelativeLayout>
+</chat.rocket.app.ui.widgets.FabMenuLayout>

@@ -1,0 +1,12 @@
+/app/twitter.properties
+/app/fabric.properties
+*.iml
+*.idea
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/modules.xml
+.DS_Store
+/build
+/captures
+.idea/modules.xml
